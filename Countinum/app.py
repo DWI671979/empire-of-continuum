@@ -13,7 +13,15 @@ st.set_page_config(
     layout="wide"
 )
 
-with open("css/manga_theme.css") as css:
+from pathlib import Path
+
+css_path = Path(__file__).parent / "css" / "manga_theme.css"
+
+with open(css_path, encoding="utf-8") as css:
+    st.markdown(
+        f"<style>{css.read()}</style>",
+        unsafe_allow_html=True
+    )
     st.markdown(
         f"<style>{css.read()}</style>",
         unsafe_allow_html=True
